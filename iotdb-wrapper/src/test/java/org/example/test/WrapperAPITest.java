@@ -1,6 +1,8 @@
-package org.example;
+package org.example.test;
 
 import org.junit.Test;
+import org.example.main.WrapperAPI;
+
 import static org.junit.Assert.assertEquals;
 
 public class WrapperAPITest {

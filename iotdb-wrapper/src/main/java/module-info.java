@@ -1,6 +1,6 @@
-module org.example.iotdbWrapper {
+module iotdb.wrapper {
     requires java.base;
-    requires org.example.iotdball;
+    requires iotdb.all;
 
-    exports org.example;
+    exports org.example.main;
 }

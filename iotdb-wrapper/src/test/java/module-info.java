@@ -1,5 +1,6 @@
-module iotdb.wrapper {
+module iotdb.wrapper.test {
     requires java.base;
-    requires org.example.iotdball;
+    requires iotdb.all;
+    requires iotdb.wrapper;
     requires junit;
 }

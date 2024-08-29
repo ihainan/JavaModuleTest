@@ -50,13 +50,49 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.12.0</version>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <release>11</release>
+                            <compilerArgs>
+                                <arg>--module-path</arg>
+                                <arg>${project.basedir}/../iotdb-all/target/iotdb-all-1.0-SNAPSHOT-all.jar</arg>
+                            </compilerArgs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-testCompile</id>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <configuration>
+                            <release>11</release>
+                            <useModulePath>false</useModulePath>
+                            <compilerArgs>
+                                <arg>--module-path</arg>
+                                <arg>${project.basedir}/../iotdb-all/target/iotdb-all-1.0-SNAPSHOT-all.jar:${user.home}/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:${user.home}/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:${project.basedir}/target/classes</arg>
+                            </compilerArgs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
                 <configuration>
-                    <release>11</release> 
-                    <compilerArgs>
-                        <arg>--module-path</arg>
-                        <arg>${project.basedir}/../iotdb-all/target/iotdb-all-1.0-SNAPSHOT-all.jar</arg>
-                    </compilerArgs>
+                    <useModulePath>false</useModulePath>
+                    <argLine>
+                        --module-path ${project.basedir}/../iotdb-all/target/iotdb-all-1.0-SNAPSHOT-all.jar:${user.home}/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:${user.home}/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:${project.basedir}/target/classes
+                    </argLine>
+                    <reuseForks>false</reuseForks>
+                    <runOrder>random</runOrder>
                 </configuration>
             </plugin>
         </plugins>

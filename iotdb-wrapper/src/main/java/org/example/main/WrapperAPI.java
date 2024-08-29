@@ -1,4 +1,4 @@
-package org.example;
+package org.example.main;
 
 import org.apache.iotdb.tsfile.file.metadata.enums.TSDataType;
 import org.apache.iotdb.tsfile.file.metadata.enums.TSEncoding;
